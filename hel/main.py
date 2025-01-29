@@ -6,22 +6,24 @@ from enemies import enemy_generator
 def main():
     
     print("This is my game called 'Hel' named after the Norse God for the underworld!")
-    while True:
-        select = main_menu()
-        selection(select)
-        room_generator()
-        break
+    select = main_menu()
+    if select == "start game":
+        start_game() #moved start game to main fuction for clarity
+    else: 
+        selection(select) #if they dont select start game
+    room_generator() #runs room generator from enemies.py
+   
 
 
 #Make a selection to begin game, open options, or quit
 def main_menu():
     
-    while True:
+    while True: #infinite loop to keep giving the user the menu until they make viable choice
         print("Please type a selection from the list:")
         print("Start Game")
         print("Options")
         print("Quit")
-        select = input().strip().lower()
+        select = input().strip().lower() #captures user selection
         if select not in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
             print("Invalid Selection")
         else:
@@ -31,9 +33,7 @@ def main_menu():
 #switch statement for the main menu
 def selection(select):
     while True:
-        if select == "start game":
-            return start_game()
-        elif select == "options":
+        if select == "options":
             return options()
         elif select == "quit":
             return quit()
@@ -51,7 +51,7 @@ def start_game():
     if name == "":
         start_game()
     else:
-        print(f"You selected {name}. Your attack is {attack} and your defense is {defense}")
+        print(f"You selected {name}. Your attack is {attack} and your defense is {defense}\n")
         
 
 
@@ -81,9 +81,8 @@ def char_select():
 
 
 def room_generator():
-    print("You enter the room")
-    enemy_generator()
-    while True:
+    enemy_generator() #run enemy generator from enemies
+    while True: #infinite loop to get a valid response from the user
         x = input("Would you like to go left or right? ").strip().lower()
         if x == "left":
             print("You go left.")
@@ -100,7 +99,7 @@ def room_generator():
 
 #function for opening options menu
 def options():
-    print("Options")
+    print("You entered the options menu")
     exit() #placeholder until we add loop or something to add options or bring user back to menu
 
 #function for quitting game
