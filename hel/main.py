@@ -38,7 +38,7 @@ def selection(select):
         elif select == "quit":
             return quit()
         else:
-            print("Invalid selection.")
+            print("How did you get this output LOL")
 
 
 #function for starting the game
