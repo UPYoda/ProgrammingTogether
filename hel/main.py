@@ -1,5 +1,5 @@
 from characters import character
-from enemies import enemy_generator
+from characters import enemy_generator
 
 
 #Run on startup, introduce game and take player to the main menu
