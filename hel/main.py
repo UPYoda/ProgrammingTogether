@@ -4,7 +4,14 @@ from characters import character
 def main():
     
     print("This is my game called 'Hel' named after the Norse God for the underworld!")
-    main_menu()
+    while True:
+        select = main_menu()
+        selection(select)
+        break
+    while True:
+        room_generator()
+        break
+
 
 #Make a selection to begin game, open options, or quit
 def main_menu():
@@ -13,15 +20,18 @@ def main_menu():
     print("Options")
     print("Quit")
     select = input().strip().lower()
+    return select
 
-    #match statement to choose what the user inputs
+
+#switch statement for the main menu
+def selection(select):
     match select:
         case "start game":
-            start_game()
+            return start_game()
         case "options":
-            options()
+            return options()
         case "quit":
-            quit()
+            return quit()
         case _:
             print("Invalid selection.")
 
@@ -42,7 +52,7 @@ def start_game():
         start_game()
     else:
         print(f"You selected {name}. Your attack is {attack} and your defense is {defense}")
-
+        
 
 
 
@@ -67,10 +77,21 @@ def char_select():
             return name, attack, defense
         else:
             print("Please enter Y or N")
-        return name, attack, defense
 
 
 
+def room_generator():
+    print("You enter the room")
+    while True:
+        x = input("Would you like to go left or right? ").strip().lower()
+        if x == "left":
+            print("You go left.")
+            return False
+        elif x == "right":
+            print("You go right.")
+            return False
+        else:
+            print("Invalid response")
 
 
 
