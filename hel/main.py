@@ -11,7 +11,7 @@ def main():
         start_game() #moved start game to main fuction for clarity
     else: 
         selection(select) #if they dont select start game
-    room_generator() #runs room generator from characters.py
+    room_generator() #runs room generator 
    
 
 
@@ -84,7 +84,8 @@ def char_select():
 
 def room_generator():
     enemy_generator() #run enemy generator from characters.py
-    while True: #infinite loop to get a valid response from the user
+
+    while True: #infinite loop to get a valid response from the user to go left or right
         x = input("Would you like to go left or right? ").strip().lower()
         if x == "left":
             print("You go left.")
