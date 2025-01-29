@@ -1,4 +1,6 @@
 from characters import character
+from enemies import enemy_generator
+
 
 #Run on startup, introduce game and take player to the main menu
 def main():
@@ -7,43 +9,41 @@ def main():
     while True:
         select = main_menu()
         selection(select)
-        break
-    while True:
         room_generator()
         break
 
 
 #Make a selection to begin game, open options, or quit
 def main_menu():
-    print("Please type a selection from the list:")
-    print("Start Game")
-    print("Options")
-    print("Quit")
-    select = input().strip().lower()
-    return select
+    
+    while True:
+        print("Please type a selection from the list:")
+        print("Start Game")
+        print("Options")
+        print("Quit")
+        select = input().strip().lower()
+        if select not in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
+            print("Invalid Selection")
+        else:
+            return select
 
 
 #switch statement for the main menu
 def selection(select):
-    match select:
-        case "start game":
+    while True:
+        if select == "start game":
             return start_game()
-        case "options":
+        elif select == "options":
             return options()
-        case "quit":
+        elif select == "quit":
             return quit()
-        case _:
+        else:
             print("Invalid selection.")
 
 
 #function for starting the game
 def start_game():
     
-    #initialize player values
-    name = ""
-    attack = 0
-    defense = 0
-
     #Character selection
     name, attack, defense = char_select()
 
@@ -82,6 +82,7 @@ def char_select():
 
 def room_generator():
     print("You enter the room")
+    enemy_generator()
     while True:
         x = input("Would you like to go left or right? ").strip().lower()
         if x == "left":
@@ -100,6 +101,7 @@ def room_generator():
 #function for opening options menu
 def options():
     print("Options")
+    exit() #placeholder until we add loop or something to add options or bring user back to menu
 
 #function for quitting game
 def quit():
