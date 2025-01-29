@@ -13,11 +13,8 @@ def main_menu():
     print("Options")
     print("Quit")
     select = input().strip().lower()
-    selection(select)
 
-
-#switch statement for the main menu
-def selection(select):
+    #match statement to choose what the user inputs
     match select:
         case "start game":
             start_game()
@@ -45,6 +42,7 @@ def start_game():
         start_game()
     else:
         print(f"You selected {name}. Your attack is {attack} and your defense is {defense}")
+
 
 
 
