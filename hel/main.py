@@ -1,8 +1,9 @@
+from characters import character
+
 #Run on startup, introduce game and take player to the main menu
 def main():
     
     print("This is my game called 'Hel' named after the Norse God for the underworld!")
-    initialize_player()
     main_menu()
 
 #Make a selection to begin game, open options, or quit
@@ -24,111 +25,51 @@ def selection(select):
             options()
         case "quit":
             quit()
+        case _:
+            print("Invalid selection.")
 
 
 #function for starting the game
 def start_game():
     
+    #initialize player values
     name = ""
     attack = 0
     defense = 0
 
-    print("Choose your Character!")
-    print("Type the name of the character you would like to play as!")
-    print("Thor, Loki, Odin, Tyr")
-    char = input().strip().lower()
-    name, attack, defense = character_select(char,name,attack,defense)
+    #Character selection
+    name, attack, defense = char_select()
 
+    #check to ensure character was selected and display stats
     if name == "":
         start_game()
     else:
         print(f"You selected {name}. Your attack is {attack} and your defense is {defense}")
 
 
-#selecting a character using match (maybe I should just use a dictionary HAHA)
-def character_select(char,name,attack,defense):
-    match char:
-        case "thor":
-            while True: #infinite loop to select thor
-                x = input("Confirm (Y/N) Do you want to select thor? ").strip().lower()
-                if x == "y":
-                    name = "Thor"
-                    attack = 5
-                    defense = 5
-                    break
-                
-                elif x == 'n':
-                    name = ""
-                    attack = 0
-                    defense = 0
-                    return name, attack, defense #returns the values of name attack and defense so they can be used outside the function
-                else:
-                    print("Please enter Y or N")
-                    
-        case "loki":
-            while True: #infinite loop to select thor
-                x = input("Confirm (Y/N) Do you want to select Loki? ").strip().lower()
-                if x == "y":
-                    name = "Loki"
-                    attack = 3
-                    defense = 7
-                    break
-                
-                elif x == 'n':
-                    name = ""
-                    attack = 0
-                    defense = 0
-                    return name, attack, defense
-                else:
-                    print("Please enter Y or N")            
 
-        case "odin":
-            while True: #infinite loop to select thor
-                x = input("Confirm (Y/N) Do you want to select Odin? ").strip().lower()
-                if x == "y":
-                    name = "Odin"
-                    attack = 6
-                    defense = 4
-                    break
-                
-                elif x == 'n':
-                    name = ""
-                    attack = 0
-                    defense = 0
-                    return name, attack, defense
-                else:
-                    print("Please enter Y or N")            
+#selecting a character
+def char_select():
+    print("Choose your Character!")
+    print("Type the name of the character you would like to play as!")
+    print("Thor, Loki, Odin, Tyr")
+    char = input().strip().lower()
 
-        case "tyr":
-            while True: #infinite loop to select thor
-                x = input("Confirm (Y/N) Do you want to select Tyr? ").strip().lower()
-                if x == "y":
-                    name = "Tyr"
-                    attack = 2
-                    defense = 8
-                    break
-                
-                elif x == 'n':
-                    name = ""
-                    attack = 0
-                    defense = 0
-                    return name, attack, defense
-                else:
-                    print("Please enter Y or N")            
-
-    return name, attack, defense
-
-
-
-
-
-
-
-
-
-
-
-
+    while True:
+        x = input(f"Confirm (Y/N) Do you want to select {character[char]["name"]}? ").strip().lower() #look into characters dictionary list
+        if x == "y":
+            name = char
+            attack = character[char]["attack"]
+            defense = character[char]["defense"]
+            return name, attack, defense
+        elif x == 'n':
+            name = ""
+            attack = 0
+            defense = 0
+            return name, attack, defense
+        else:
+            print("Please enter Y or N")
+        return name, attack, defense
 
 
 
@@ -143,14 +84,9 @@ def options():
 
 #function for quitting game
 def quit():
+    print("Thanks for playing!")
     exit()
 
-#initialize player character
-def initialize_player():
-    name = "o"
-    attack = 0
-    defense = 0
-    return name, attack, defense
 
 
 
