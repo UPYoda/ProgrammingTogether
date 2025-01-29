@@ -69,11 +69,13 @@ def char_select():
             name = char
             attack = character[char]["attack"]
             defense = character[char]["defense"]
+            print("\n")
             return name, attack, defense
         elif x == 'n':
             name = ""
             attack = 0
             defense = 0
+            print("\n")
             return name, attack, defense
         else:
             print("Please enter Y or N")
