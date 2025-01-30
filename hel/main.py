@@ -1,5 +1,10 @@
 from characters import character
 from characters import enemy_generator
+import shutil #to get users terminal width
+
+
+
+
 
 
 #Run on startup, introduce game and take player to the main menu
@@ -23,11 +28,11 @@ def main_menu():
         print("Start Game")
         print("Options")
         print("Quit")
-        select = input().strip().lower() #captures user selection
-        if select not in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
-            print("Invalid Selection")
-        else:
+        select = input("Enter your choice: ").strip().lower() ; print("\n") #captures user selection
+        if select in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
             return select
+        else:
+            print("Invalid Selection")
 
 
 #switch statement for the main menu
@@ -51,6 +56,9 @@ def start_game():
     if name == "":
         start_game()
     else:
+        # Get the terminal width
+        terminal_width = shutil.get_terminal_size().columns
+        print("*" * terminal_width)
         print(f"You selected {name}. Your attack is {attack} and your defense is {defense}\n")
         
 
@@ -58,11 +66,20 @@ def start_game():
 
 #selecting a character
 def char_select():
-    print("Choose your Character!")
-    print("Type the name of the character you would like to play as!")
-    print("Thor, Loki, Odin, Tyr")
-    char = input().strip().lower()
+    while True:
+        try:
+            print("Choose your Character!")
+            print("Type the name of the character you would like to play as!")
+            print("Thor, Loki, Odin, Tyr")
+            char = input().strip().lower() #user inputs a character name they want to play as
+            if char not in character: #check to make sure user input matches something in the list
+                raise KeyError #if it does not match something in the list raise this error
+            else:
+                break
+        except KeyError:#when this error is raised tell user to pick char from list
+            print("Please enter a character from the list")
 
+    
     while True:
         x = input(f"Confirm (Y/N) Do you want to select {character[char]["name"]}? ").strip().lower() #look into characters dictionary list
         if x == "y":
