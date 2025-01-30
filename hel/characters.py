@@ -15,13 +15,13 @@ items = {
         "common": {"dagger": 1, "shortsword": 2}, 
         "rare": {"axe": 3, "longsword": 3},
         "epic": {"gungnir": 4, "mjolnir": 4},
-        "legendary": {"Hammer of the gods": 6}
+        "legendary": {"Hammer of the gods": 6} #test if enemy generator works with only one leg item instead of 2 (it does)
         },
     "defensive": {
         "common": {"robe": 1, "cloth helmet": 2}, 
         "rare": {"iron chestplate": 3, "iron leggings": 3},
         "epic": {"iron grippers": 4, "gleipnir": 4},
-        "legendary": {"Armor of the gods": 6}
+        "legendary": {"Armor of the gods": 6} #test if enemy generator works with only one leg item instead of 2 (it does). Nowe can add any items we want just by updating this dictionary
         },
    
 }
