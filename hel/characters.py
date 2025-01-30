@@ -14,12 +14,14 @@ items = {
     "offensive": {
         "common": {"dagger": 1, "shortsword": 2}, 
         "rare": {"axe": 3, "longsword": 3},
-        "epic": {"gungnir": 4, "mjolnir": 4}
+        "epic": {"gungnir": 4, "mjolnir": 4},
+        "legendary": {"Hammer of the gods": 6}
         },
     "defensive": {
         "common": {"robe": 1, "cloth helmet": 2}, 
         "rare": {"iron chestplate": 3, "iron leggings": 3},
-        "epic": {"iron grippers": 4, "gleipnir": 4}
+        "epic": {"iron grippers": 4, "gleipnir": 4},
+        "legendary": {"Armor of the gods": 6}
         },
    
 }
@@ -39,11 +41,11 @@ def enemy_generator():
     e_name = enemy[gen_enemy_id]#assignes the value of the array at gen_enemy_id to e_name
     
     rarity = rarity_generator()#calls rarity of first assigned item
-    e_item_off_name = list(items["offensive"][rarity])[1]#list function will create a list of items in the rarity that was assigned to this and then pick the one in the second slot with the [1]. This will be the key not the value because we are choosing from a list
+    e_item_off_name = list(items["offensive"][rarity])[random.randint(0,len(items["offensive"][rarity])-1)]#list function will create a list of items in the rarity that was assigned to this and then pick the one in a random slot. This will be the key not the value because we are choosing from a list
     e_item_off_atk = items["offensive"][rarity][e_item_off_name]#need to get the value now 
 
     rarity = rarity_generator()#calls rarity again to get new value for second assigned item
-    e_item_def_name = list(items["defensive"][rarity])[1]#list function will create a list of items in the rarity that was assigned to this and then pick the one in the second slot with the [1]. This will be the key not the value becasue we are choosing from a list
+    e_item_def_name = list(items["defensive"][rarity])[random.randint(0,len(items["defensive"][rarity])-1)]#list function will create a list of items in the rarity that was assigned to this and then pick the one in a random slot. This will be the key not the value becasue we are choosing from a list
     e_item_def_def = items["defensive"][rarity][e_item_def_name]#need to get the value now 
 
     e_attk = 0 + e_item_off_atk #placeholder in  case I want to add base stats to the enemies later
@@ -56,17 +58,19 @@ def enemy_generator():
                 }
     }
     
-    print(f"As you enter the hall you encounter a {e_name} weilding a {e_item_off_name} with an attack of {e_attk} and wearing a {e_item_def_name} with a defense of {e_def}\n") #may move this over to the main.py at some point. just print values right now.
+    print(f"As you enter the hall you encounter a {e_name} weilding a {e_item_off_name} with an attack of {e_attk} and wearing the {e_item_def_name} with a defense of {e_def}\n") #may move this over to the main.py at some point. just print values right now.
 
-    return e1 #returns a (almost) fully randomly generated enemy, which im not using yet anywhere I just thought it might be useful later
-
-
+    return e1 #returns a now fully randomly generated enemy, which im not using yet anywhere I just thought it might be useful later
 
 
 
+
+#returns an item type for the rarity
 def rarity_generator():
     rarity = random.randint(1,100)
-    if rarity <= 100 and rarity >=95:
+    if rarity <= 100 and rarity > 98:
+        return "legendary"
+    elif rarity <= 98 and rarity >= 95:
         return "epic"
     elif rarity < 95 and rarity >= 80:
         return "rare"

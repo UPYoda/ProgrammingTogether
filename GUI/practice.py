@@ -63,7 +63,7 @@ meters = StringVar() #To be passed in the definition for calculating feet
 meters_result = StringVar() #Construct a string variable to be passed out of the conversion
 meters_entry = ttk.Entry(mainframe, width = 20, textvariable=meters)
 meters_entry.grid(column=2, row=4, sticky=(W, E))
-ttk.Label(mainframe, textvariable=meters_result).grid(column=2, row=2, sticky=(W,E))  #This will output the result of the meters to the correct postion
+ttk.Label(mainframe, font = 25, textvariable=meters_result).grid(column=2, row=2, sticky=(W,E))  #This will output the result of the meters to the correct postion
 
 #Create an event driven button to execute our waiting definition and put it in the bottom right
 
