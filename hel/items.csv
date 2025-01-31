@@ -1,0 +1,15 @@
+Type,Rarity,Item,Power
+Offensive,Common,Dagger,1
+Offensive,Common,Shortsword,2
+Offensive,Rare,Axe,3
+Offensive,Rare,Longsword,3
+Offensive,Epic,Gungnir,4
+Offensive,Epic,Mjolnir,4
+Offensive,Legendary,Hammer of the gods,6
+Defensive,Common,Robe,1
+Defensive,Common,Cloth Helmet,2
+Defensive,Rare,Iron Chestplate,3
+Defensive,Rare,Iron Leggings,3
+Defensive,Epic,Iron Grippers,4
+Defensive,Epic,Gleipnir,4
+Defensive,Legendary,Armor of the gods,6
