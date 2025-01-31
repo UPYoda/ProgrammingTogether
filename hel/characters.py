@@ -28,6 +28,35 @@ items = {
 
 
 
+
+
+class Enemy: #NOT YET USED
+    def __init__(self, inventory):
+        self.inventory = inventory
+
+
+
+
+
+
+
+troll = Enemy(inventory=items)
+print(Enemy.inventory)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #array with enemy names
 enemy = [
     "giant","dragon","serpent","wolf"
@@ -35,6 +64,8 @@ enemy = [
 
 #generates a random enemy from list of enemy names
 def enemy_generator():
+    
+
     
     # the random.randint is calling a random interger and the (0,len(enemy)-1) means choose random int from 0 to lenth of enemy array -1        *so essentially index randomly at 0, 1, 2, or 3 and return the value
     gen_enemy_id = random.randint(0,len(enemy)-1)
@@ -82,11 +113,7 @@ def rarity_generator():
 
 
 
-class Baddie:
-    def __init__(self, name, attack, defense):
-        self.attack = attack
-        self.defense = defense
-        self.name = name
+
     
 
 
