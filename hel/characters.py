@@ -1,4 +1,6 @@
 import random
+import csv
+
 
 #main player characters
 character = {
@@ -9,25 +11,29 @@ character = {
 
     }
 
-#items
-items = {
-    "offensive": {
-        "common": {"dagger": 1, "shortsword": 2}, 
-        "rare": {"axe": 3, "longsword": 3},
-        "epic": {"gungnir": 4, "mjolnir": 4},
-        "legendary": {"Hammer of the gods": 6} #test if enemy generator works with only one leg item instead of 2 (it does)
-        },
-    "defensive": {
-        "common": {"robe": 1, "cloth helmet": 2}, 
-        "rare": {"iron chestplate": 3, "iron leggings": 3},
-        "epic": {"iron grippers": 4, "gleipnir": 4},
-        "legendary": {"Armor of the gods": 6} #test if enemy generator works with only one leg item instead of 2 (it does). Nowe can add any items we want just by updating this dictionary
-        },
-   
-}
 
 
+items = {}
 
+# Read the CSV file
+with open("items.csv", newline='', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile) #read csv file as a dictionary
+    
+    for row in reader:
+        category = row["Type"].lower()
+        rarity = row["Rarity"].lower()
+        item_name = row["Item"]
+        power = int(row["Power"])
+
+        # Initialize categories if not exists
+        if category not in items:
+            items[category] = {}
+
+        if rarity not in items[category]:
+            items[category][rarity] = {}
+
+        # Add the item to the corresponding place
+        items[category][rarity][item_name] = power
 
 
 class Enemy: #NOT YET USED
@@ -41,7 +47,7 @@ class Enemy: #NOT YET USED
 
 
 troll = Enemy(inventory=items)
-print(Enemy.inventory)
+#print(Enemy.inventory)
 
 
 

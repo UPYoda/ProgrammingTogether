@@ -1,6 +1,6 @@
 from characters import character
 from characters import enemy_generator
-from characters import Baddie
+
 import shutil #to get users terminal width
 
 
