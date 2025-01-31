@@ -79,3 +79,15 @@ def rarity_generator():
     else:
         print("rarity generator did not work")
     
+
+
+
+class Baddie:
+    def __init__(self, name, attack, defense):
+        self.attack = attack
+        self.defense = defense
+        self.name = name
+    
+
+
+

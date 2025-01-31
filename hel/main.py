@@ -1,5 +1,6 @@
 from characters import character
 from characters import enemy_generator
+from characters import Baddie
 import shutil #to get users terminal width
 
 
@@ -60,6 +61,7 @@ def start_game():
         terminal_width = shutil.get_terminal_size().columns
         print("*" * terminal_width)
         print(f"You selected {name}. Your attack is {attack} and your defense is {defense}\n")
+      
         
 
 
@@ -126,7 +128,6 @@ def options():
 def quit():
     print("Thanks for playing!")
     exit()
-
 
 
 
