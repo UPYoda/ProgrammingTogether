@@ -10,7 +10,7 @@ import shutil #to get users terminal width
 
 #Run on startup, introduce game and take player to the main menu
 def main():
-    
+   
     print("This is my game called 'Hel' named after the Norse God for the underworld!")
     select = main_menu()
     if select == "start game":
@@ -29,12 +29,14 @@ def main_menu():
         print("Start Game")
         print("Options")
         print("Quit")
-        select = input("Enter your choice: ").strip().lower() ; print("\n") #captures user selection
-        if select in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
-            return select
+        s = input("Enter your choice: ").strip().lower() ; print("\n") #captures user selection
+        if s in ["start game", "options", "quit"]: #ensure that the user inputs one of the menu options
+            return s
         else:
             print("Invalid Selection")
 
+
+# s : "start game"
 
 #switch statement for the main menu
 def selection(select):
