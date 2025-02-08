@@ -101,7 +101,7 @@ def enemy_generator():
     
     print(items)    
 
-    print(f"As you enter the hall you encounter a {e_name} wielding a {e_item_off_name} with an attack of {e_attk} and wearing the {e_item_def_name} with a defense of {e_def}\n") #may move this over to the main.py at some point. just print values right now.
+    print(f"As you enter the hall you encounter an {e_name} wielding a {e_item_off_name} with an attack of {e_attk} and wearing the {e_item_def_name} with a defense of {e_def}\n") #may move this over to the main.py at some point. just print values right now.
 
     return e1 #returns a now fully randomly generated enemy, which im not using yet anywhere I just thought it might be useful later
 
