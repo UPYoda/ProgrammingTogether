@@ -13,7 +13,9 @@ character = {
 
 
 
+
 items = {}
+
 
 # Read the CSV file
 with open("items.csv", newline='', encoding='utf-8') as itemsfile:
@@ -21,23 +23,35 @@ with open("items.csv", newline='', encoding='utf-8') as itemsfile:
     
     for row in reader:
         category = row["Type"].lower()
-        print(row)
+       
         rarity = row["Rarity"].lower()
-        print(row)
+       
         item_name = row["Item"]
-        print(row)
+        
         power = int(row["Power"])
-        print(row)
+           
+
 
         # Initialize categories if not exists
         if category not in items:
             items[category] = {}
+            
 
         if rarity not in items[category]:
             items[category][rarity] = {}
-
+            
         # Add the item to the corresponding place
         items[category][rarity][item_name] = power
+       
+       
+
+
+
+
+
+
+
+
 
 
 class Enemy: #NOT YET USED
@@ -99,7 +113,7 @@ def enemy_generator():
                 }
     }
     
-    print(items)    
+      
 
     print(f"As you enter the hall you encounter an {e_name} wielding a {e_item_off_name} with an attack of {e_attk} and wearing the {e_item_def_name} with a defense of {e_def}\n") #may move this over to the main.py at some point. just print values right now.
 
