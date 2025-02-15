@@ -1,3 +1,4 @@
+
 import random
 import csv
 
@@ -15,7 +16,6 @@ character = {
 
 
 items = {}
-
 
 # Read the CSV file
 with open("items.csv", newline='', encoding='utf-8') as itemsfile:
@@ -42,6 +42,7 @@ with open("items.csv", newline='', encoding='utf-8') as itemsfile:
             
         # Add the item to the corresponding place
         items[category][rarity][item_name] = power
+
        
        
 
@@ -54,9 +55,6 @@ with open("items.csv", newline='', encoding='utf-8') as itemsfile:
 
 
 
-class Enemy: #NOT YET USED
-    def __init__(self, inventory):
-        self.inventory = inventory
 
 
 
@@ -64,8 +62,9 @@ class Enemy: #NOT YET USED
 
 
 
-troll = Enemy(inventory=items)
-#print(Enemy.inventory)
+
+
+
 
 
 
